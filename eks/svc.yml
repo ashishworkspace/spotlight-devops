@@ -3,51 +3,94 @@ apiVersion: v1
 kind: Service
 metadata:
   name: server-customer-1
+  namespace: sptolight-server-customer-1
 spec:
   selector:
-    namespace: sptolight-server-customer-1
     app: server-customer-1
   ports:
     - protocol: TCP
       port: 5000
       targetPort: 5000
 ---
+kind: Service
+apiVersion: v1
+metadata:
+  name: server-customer-1
+  namespace: sptolight-server-customer-1
+spec:
+  type: ExternalName
+  externalName: server-customer-1.sptolight-server-customer-1.svc.cluster.local
+  ports:
+  - port: 5000
+---
 apiVersion: v1
 kind: Service
 metadata:
   name: server-customer-2
+  namespace: sptolight-server-customer-2
 spec:
   selector:
-    namespace: sptolight-server-customer-2
     app: server-customer-2
   ports:
     - protocol: TCP
       port: 5000
       targetPort: 5000
 ---
+kind: Service
+apiVersion: v1
+metadata:
+  name: server-customer-2
+  namespace: sptolight-server-customer-2
+spec:
+  type: ExternalName
+  externalName: server-customer-2.sptolight-server-customer-2.svc.cluster.local
+  ports:
+  - port: 5000
+---
 apiVersion: v1
 kind: Service
 metadata:
   name: client-customer-1
+  namespace: sptolight-client-customer-1
 spec:
   selector:
-    namespace: sptolight-client-customer-1
     app: client-customer-1
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
 ---
+kind: Service
+apiVersion: v1
+metadata:
+  name: client-customer-1
+  namespace: sptolight-client-customer-1
+spec:
+  type: ExternalName
+  externalName: client-customer-1.sptolight-client-customer-1.svc.cluster.local
+  ports:
+  - port: 80
+---
 apiVersion: v1
 kind: Service
 metadata:
   name: client-customer-2
+  namespace: sptolight-client-customer-2
 spec:
   selector:
-    namespace: sptolight-client-customer-2
     app: client-customer-2
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
 ---
+kind: Service
+apiVersion: v1
+metadata:
+  name: client-customer-2
+  namespace: sptolight-client-customer-2
+spec:
+  type: ExternalName
+  externalName: client-customer-2.sptolight-client-customer-2.svc.cluster.local
+  ports:
+  - port: 80
