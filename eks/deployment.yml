@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: sptolight-server-customer-1
+  name: server-customer-1
+spec:
+  selector:
+    matchLabels:
+      app: server-customer-1
+  template:
+    metadata:
+      labels:
+        app: server-customer-1
+    spec:
+      containers:
+        - name: server-customer-1
+          image: ashishizofficial/spotlight-server-customer-1
+          # resources:
+          #   limits:
+          #     memory: "128Mi"
+          #     cpu: "500m"
+          ports:
+            - containerPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: sptolight-server-customer-2
+  name: server-customer-2
+spec:
+  selector:
+    matchLabels:
+      app: server-customer-2
+  template:
+    metadata:
+      labels:
+        app: server-customer-2
+    spec:
+      containers:
+        - name: server-customer-2
+          image: ashishizofficial/spotlight-server-customer-2
+          # resources:
+          #   limits:
+          #     memory: "128Mi"
+          #     cpu: "500m"
+          ports:
+            - containerPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: sptolight-client-customer-1
+  name: client-customer-1
+spec:
+  selector:
+    matchLabels:
+      app: client-customer-1
+  template:
+    metadata:
+      labels:
+        app: client-customer-1
+    spec:
+      containers:
+        - name: client-customer-1
+          image: ashishizofficial/spotlight-client-customer-1
+          # resources:
+          #   limits:
+          #     memory: "128Mi"
+          #     cpu: "500m"
+          ports:
+            - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: sptolight-client-customer-2
+  name: client-customer-2
+spec:
+  selector:
+    matchLabels:
+      app: client-customer-2
+  template:
+    metadata:
+      labels:
+        app: client-customer-2
+    spec:
+      containers:
+        - name: client-customer-2
+          image: ashishizofficial/spotlight-client-customer-2
+          # resources:
+          #   limits:
+          #     memory: "128Mi"
+          #     cpu: "500m"
+          ports:
+            - containerPort: 80
+---
+

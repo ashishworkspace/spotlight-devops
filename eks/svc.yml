@@ -1,0 +1,49 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: server-customer-1
+spec:
+  selector:
+    app: server-customer-1
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: server-customer-2
+spec:
+  selector:
+    app: server-customer-2
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-customer-1
+spec:
+  selector:
+    app: client-customer-1
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-customer-2
+spec:
+  selector:
+    app: client-customer-2
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---

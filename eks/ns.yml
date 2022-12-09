@@ -1,0 +1,28 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: sptolight-server-customer-1
+  name: sptolight-server-customer-1
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: sptolight-server-customer-1
+  name: sptolight-server-customer-2
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: sptolight-server-customer-1
+  name: sptolight-client-customer-1
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: sptolight-server-customer-1
+  name: sptolight-client-customer-2
