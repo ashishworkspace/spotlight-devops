@@ -1,4 +1,5 @@
 FROM node:16.16.0-slim
+RUN apt update && apt install vim curl -y
 ENV ENV=NODE_APP_CUSTOMER_1
 WORKDIR /app/
 COPY ./package.json /app/
