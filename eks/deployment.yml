@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: sptolight-server-customer-1
+  namespace: spotlight-server-customer-1
   name: server-customer-1
 spec:
   selector:
@@ -25,7 +25,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: sptolight-server-customer-2
+  namespace: spotlight-server-customer-2
   name: server-customer-2
 spec:
   selector:
@@ -49,7 +49,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: sptolight-client-customer-1
+  namespace: spotlight-client-customer-1
   name: client-customer-1
 spec:
   selector:
@@ -73,7 +73,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: sptolight-client-customer-2
+  namespace: spotlight-client-customer-2
   name: client-customer-2
 spec:
   selector:
