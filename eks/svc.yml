@@ -60,17 +60,6 @@ spec:
       port: 80
       targetPort: 80
 ---
-kind: Service
-apiVersion: v1
-metadata:
-  name: client-customer-1
-  namespace: sptolight-client-customer-1
-spec:
-  type: ExternalName
-  externalName: client-customer-1.sptolight-client-customer-1.svc.cluster.local
-  ports:
-  - port: 80
----
 apiVersion: v1
 kind: Service
 metadata:
@@ -83,14 +72,3 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: client-customer-2
-  namespace: sptolight-client-customer-2
-spec:
-  type: ExternalName
-  externalName: client-customer-2.sptolight-client-customer-2.svc.cluster.local
-  ports:
-  - port: 80
