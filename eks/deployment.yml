@@ -4,6 +4,7 @@ metadata:
   namespace: spotlight-server-customer-1
   name: server-customer-1
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: server-customer-1
@@ -28,6 +29,7 @@ metadata:
   namespace: spotlight-server-customer-2
   name: server-customer-2
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: server-customer-2
@@ -53,6 +55,7 @@ metadata:
   namespace: spotlight-client-customer-1
   name: client-customer-1
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: client-customer-1
@@ -84,6 +87,7 @@ metadata:
   namespace: spotlight-client-customer-2
   name: client-customer-2
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: client-customer-2
