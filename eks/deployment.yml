@@ -69,7 +69,7 @@ spec:
               memory: "128Mi"
               cpu: "200m"
           ports:
-            - containerPort: 3000
+            - containerPort: 80
           volumeMounts:
             - name: efs-pvc
               mountPath: "/data"
@@ -100,7 +100,7 @@ spec:
               memory: "128Mi"
               cpu: "200m"
           ports:
-            - containerPort: 3000
+            - containerPort: 80
           volumeMounts:
             - name: efs-pvc
               mountPath: "/data"
