@@ -4,9 +4,12 @@ import React, { useState, useEffect } from "react";
 const App = () => {
   const [data, setData] = useState({});
   const msg = async () => {
-    const response = await axios.get("http://server-customer-2:5000/customer2");
-    console.log(response.data);
-    setData(response.data);
+    fetch('http://server-customer-2:5000/customer2')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        setData(data)
+      });
   };
   useEffect(() => {
     msg();
