@@ -7,7 +7,7 @@ COPY . /app/
 RUN npm run build
 # CMD ["npm", "start"]
 
-HTTP Server
+# HTTP Server
 FROM nginx
 ENV ENV=PROD
 COPY --from=build /app/build/ /usr/share/nginx/html/
