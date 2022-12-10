@@ -15,10 +15,10 @@ spec:
       containers:
         - name: server-customer-1
           image: ashishizofficial/spotlight-server-customer-1
-          # resources:
-          #   limits:
-          #     memory: "128Mi"
-          #     cpu: "500m"
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
           ports:
             - containerPort: 5000
 ---
@@ -39,12 +39,13 @@ spec:
       containers:
         - name: server-customer-2
           image: ashishizofficial/spotlight-server-customer-2
-          # resources:
-          #   limits:
-          #     memory: "128Mi"
-          #     cpu: "500m"
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
           ports:
             - containerPort: 5000
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -63,12 +64,19 @@ spec:
       containers:
         - name: client-customer-1
           image: ashishizofficial/spotlight-client-customer-1
-          # resources:
-          #   limits:
-          #     memory: "128Mi"
-          #     cpu: "500m"
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
           ports:
             - containerPort: 3000
+          volumeMounts:
+            - name: efs-pvc
+              mountPath: "/data"
+      volumes:
+        - name: efs-pvc
+          persistentVolumeClaim:
+            claimName: client-customer-1-pvc
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -87,11 +95,18 @@ spec:
       containers:
         - name: client-customer-2
           image: ashishizofficial/spotlight-client-customer-2
-          # resources:
-          #   limits:
-          #     memory: "128Mi"
-          #     cpu: "500m"
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
           ports:
             - containerPort: 3000
+          volumeMounts:
+            - name: efs-pvc
+              mountPath: "/data"
+      volumes:
+        - name: efs-pvc
+          persistentVolumeClaim:
+            claimName: client-customer-2-pvc
 ---
 

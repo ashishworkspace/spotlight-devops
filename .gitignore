@@ -2,3 +2,4 @@ server/customer1/node_modules
 server/customer2/node_modules
 client/customer-1/node_modules
 client/customer-2/node_modules
+eks/cluster/eksctl.exe

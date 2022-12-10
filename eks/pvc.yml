@@ -1,0 +1,26 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  namespace: spotlight-client-customer-1
+  name: client-customer-1-pvc
+spec:
+  storageClassName: efs
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Mi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  namespace: spotlight-client-customer-2
+  name: client-customer-2-pvc
+spec:
+  storageClassName: efs
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Mi

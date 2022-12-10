@@ -1,0 +1,18 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: eks-cluster-prod
+  region: ap-south-1
+
+nodeGroups:
+  - name: node-group-1
+    instanceType: t3a.medium
+    desiredCapacity: 1
+    volumeSize: 50
+    ssh:
+      allow: true
+      publicKeyPath: ./ec2_id_rsa.pub
+cloudWatch:
+    clusterLogging:
+        enableTypes: ["audit", "authenticator", "controllerManager"]
