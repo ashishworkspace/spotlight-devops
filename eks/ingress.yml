@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: spotlight-client-customer-1
+  name: client-customer-1
+  labels:
+    name: client-customer-1
+spec:
+  rules:
+  - host: domain1.myapp.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: client-customer-1
+            port: 
+              number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: spotlight-client-customer-2
+  name: client-customer-2
+  labels:
+    name: client-customer-2
+spec:
+  rules:
+  - host: domain2.myapp.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: client-customer-2
+            port: 
+              number: 80
