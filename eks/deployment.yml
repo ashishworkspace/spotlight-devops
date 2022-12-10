@@ -70,13 +70,13 @@ spec:
               cpu: "200m"
           ports:
             - containerPort: 80
-          volumeMounts:
-            - name: efs-pvc
-              mountPath: "/data"
-      volumes:
-        - name: efs-pvc
-          persistentVolumeClaim:
-            claimName: client-customer-1-pvc
+      #     volumeMounts:
+      #       - name: efs-pvc
+      #         mountPath: "/data"
+      # volumes:
+      #   - name: efs-pvc
+      #     persistentVolumeClaim:
+      #       claimName: client-customer-1-pvc
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -101,12 +101,12 @@ spec:
               cpu: "200m"
           ports:
             - containerPort: 80
-          volumeMounts:
-            - name: efs-pvc
-              mountPath: "/data"
-      volumes:
-        - name: efs-pvc
-          persistentVolumeClaim:
-            claimName: client-customer-2-pvc
+      #     volumeMounts:
+      #       - name: efs-pvc
+      #         mountPath: "/data"
+      # volumes:
+      #   - name: efs-pvc
+      #     persistentVolumeClaim:
+      #       claimName: client-customer-2-pvc
 ---
 
