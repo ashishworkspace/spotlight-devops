@@ -1,5 +1,6 @@
 # Spotlight-DevOps
 
+
 #### Project Structure
 ```bash
 ├───client
@@ -22,5 +23,14 @@
     └───customer2
 ```
 ### All the .yml files is located inside eks folder
+
+#### NOTE: 
+Add records for <strong>INGRESS LOAD BALANCER</strong>
+<ul>
+    <li> backend1.myapp.com </li> 
+    <li> backend2.myapp.com </li>
+    <li> domain1.myapp.com </li>
+    <li> domain2.myapp.com </li>
+</ul>
 
 #### Thanks for reading♥
