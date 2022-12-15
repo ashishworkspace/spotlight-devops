@@ -6,6 +6,7 @@ metadata:
   labels:
     name: client-customer-1
 spec:
+  ingressClassName: nginx
   rules:
   - host: domain1.myapp.com
     http:
@@ -26,6 +27,7 @@ metadata:
   labels:
     name: client-customer-2
 spec:
+  ingressClassName: nginx
   rules:
   - host: domain2.myapp.com
     http:
@@ -37,3 +39,45 @@ spec:
             name: client-customer-2
             port: 
               number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: spotlight-server-customer-1
+  name: server-customer-1
+  labels:
+    name: server-customer-1
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: backend1.myapp.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: server-customer-1
+            port: 
+              number: 5000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: spotlight-server-customer-2
+  name: server-customer-2
+  labels:
+    name: server-customer-2
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: backend2.myapp.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: server-customer-2
+            port: 
+              number: 5000

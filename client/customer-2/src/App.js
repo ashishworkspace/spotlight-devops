@@ -4,12 +4,9 @@ import React, { useState, useEffect } from "react";
 const App = () => {
   const [data, setData] = useState({});
   const msg = async () => {
-    fetch('http://server-customer-2:5000/customer2')
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        setData(data)
-      });
+    const response = await axios.get("http://backend2.myapp.com/customer2");
+    console.log(response.data);
+    setData(response.data);
   };
   useEffect(() => {
     msg();

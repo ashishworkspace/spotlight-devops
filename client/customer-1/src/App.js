@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 const App = () => {
   const [data, setData] = useState({});
   const msg = async () => {
-    const response = await axios.get("http://server-customer-1:5000/customer1");
+    const response = await axios.get("http://backend1.myapp.com/customer1");
     console.log(response.data);
     setData(response.data);
   };
