@@ -4,13 +4,13 @@ metadata:
   name: gateway-customer-1
   namespace: spotlight-customer-1
 spec:
-  selector:
+  selector: 
     app: istio-ingressgateway
     istio: ingressgateway
   servers:
     - port:
         number: 80
-        name: app
+        name: http
         protocol: HTTP
       hosts:
         - spotlight-customer-1.com
@@ -25,7 +25,7 @@ spec:
   subsets:
     - name: frontend-customer-1-subset
       labels:
-        app: server-customer-1
+        app: client-customer-1
       trafficPolicy:
         loadBalancer:
           simple: ROUND_ROBIN
