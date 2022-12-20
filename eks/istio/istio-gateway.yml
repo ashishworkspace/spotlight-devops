@@ -47,3 +47,53 @@ spec:
             host: client-customer-1.spotlight-customer-1.svc.cluster.local
             subset: frontend-customer-1-subset
           weight: 100
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: gateway-customer-2
+  namespace: spotlight-customer-2
+spec:
+  selector: 
+    app: istio-ingressgateway
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - spotlight-customer-2.com
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: frontend-customer-2
+  namespace: spotlight-customer-2
+spec:
+  host: client-customer-2.spotlight-customer-2.svc.cluster.local
+  subsets:
+    - name: frontend-customer-2-subset
+      labels:
+        app: client-customer-2
+      trafficPolicy:
+        loadBalancer:
+          simple: ROUND_ROBIN
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: frontend-customer-2-vs
+  namespace: spotlight-customer-2
+spec:
+  hosts:
+    - spotlight-customer-2.com
+  gateways:
+    - gateway-customer-2
+  http:
+    - name: frontend-customer-2
+      route:
+        - destination:
+            host: client-customer-2.spotlight-customer-2.svc.cluster.local
+            subset: frontend-customer-2-subset
+          weight: 100
