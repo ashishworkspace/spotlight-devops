@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: server-customer-1
-  namespace: spotlight-server-customer-1
+  namespace: spotlight-customer-1
 spec:
   selector:
     app: server-customer-1
@@ -16,7 +16,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: server-customer-2
-  namespace: spotlight-server-customer-2
+  namespace: spotlight-customer-2
 spec:
   selector:
     app: server-customer-2
@@ -29,7 +29,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: client-customer-1
-  namespace: spotlight-client-customer-1
+  namespace: spotlight-customer-1
 spec:
   selector:
     app: client-customer-1
@@ -37,23 +37,23 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: server-customer-1
-  namespace: spotlight-client-customer-1
-spec:
-  type: ExternalName
-  externalName: server-customer-1.spotlight-server-customer-1.svc.cluster.local
-  ports:
-  - port: 5000
+# ---
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   name: server-customer-1
+#   namespace: spotlight-customer-1
+# spec:
+#   type: ExternalName
+#   externalName: server-customer-1.spotlight-customer-1.svc.cluster.local
+#   ports:
+#   - port: 5000
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: client-customer-2
-  namespace: spotlight-client-customer-2
+  namespace: spotlight-customer-2
 spec:
   selector:
     app: client-customer-2
@@ -62,13 +62,13 @@ spec:
       port: 80
       targetPort: 80
 ---
-kind: Service
-apiVersion: v1
-metadata:
-  name: server-customer-2
-  namespace: spotlight-client-customer-2
-spec:
-  type: ExternalName
-  externalName: server-customer-2.spotlight-server-customer-2.svc.cluster.local
-  ports:
-  - port: 5000
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   name: server-customer-2
+#   namespace: spotlight-customer-2
+# spec:
+#   type: ExternalName
+#   externalName: server-customer-2.spotlight-customer-2.svc.cluster.local
+#   ports:
+#   - port: 5000

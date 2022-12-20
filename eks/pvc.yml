@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  namespace: spotlight-client-customer-1
+  namespace: spotlight-customer-1
   name: client-customer-1-pvc
 spec:
   storageClassName: efs
@@ -15,7 +15,7 @@ spec:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  namespace: spotlight-client-customer-2
+  namespace: spotlight-customer-2
   name: client-customer-2-pvc
 spec:
   storageClassName: efs

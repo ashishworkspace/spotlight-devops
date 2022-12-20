@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  namespace: spotlight-client-customer-1
+  namespace: spotlight-customer-1
   name: client-customer-1
   labels:
     name: client-customer-1
@@ -22,7 +22,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  namespace: spotlight-client-customer-2
+  namespace: spotlight-customer-2
   name: client-customer-2
   labels:
     name: client-customer-2
@@ -43,7 +43,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  namespace: spotlight-server-customer-1
+  namespace: spotlight-customer-1
   name: server-customer-1
   labels:
     name: server-customer-1
@@ -64,7 +64,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  namespace: spotlight-server-customer-2
+  namespace: spotlight-customer-2
   name: server-customer-2
   labels:
     name: server-customer-2
@@ -81,3 +81,24 @@ spec:
             name: server-customer-2
             port: 
               number: 5000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: istio-system
+  name: grafana-dashboard
+  labels:
+    name: grafana-dashboard
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: centos.in
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: grafana
+            port: 
+              number: 3000

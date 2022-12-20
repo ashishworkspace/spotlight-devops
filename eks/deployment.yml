@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: spotlight-server-customer-1
+  namespace: spotlight-customer-1
   name: server-customer-1
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: server-customer-1
@@ -26,10 +26,10 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: spotlight-server-customer-2
+  namespace: spotlight-customer-2
   name: server-customer-2
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: server-customer-2
@@ -52,10 +52,10 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: spotlight-client-customer-1
+  namespace: spotlight-customer-1
   name: client-customer-1
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: client-customer-1
@@ -70,7 +70,7 @@ spec:
           resources:
             limits:
               memory: "128Mi"
-              cpu: "350m"
+              cpu: "250m"
           ports:
             - containerPort: 80
       #     volumeMounts:
@@ -84,10 +84,10 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: spotlight-client-customer-2
+  namespace: spotlight-customer-2
   name: client-customer-2
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: client-customer-2
@@ -102,7 +102,7 @@ spec:
           resources:
             limits:
               memory: "128Mi"
-              cpu: "350m"
+              cpu: "250m"
           ports:
             - containerPort: 80
       #     volumeMounts:
