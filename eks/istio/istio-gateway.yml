@@ -51,6 +51,110 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
+  name: gateway-server-customer-1
+  namespace: spotlight-customer-1
+spec:
+  selector: 
+    app: istio-ingressgateway
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - domain1.myapp.com
+        - backend1.myapp.com
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: backend-customer-1
+  namespace: spotlight-customer-1
+spec:
+  host: server-customer-1.spotlight-customer-1.svc.cluster.local
+  subsets:
+    - name: backend-customer-1-subset
+      labels:
+        app: server-customer-1
+      trafficPolicy:
+        loadBalancer:
+          simple: ROUND_ROBIN
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: backend-customer-1-vs
+  namespace: spotlight-customer-1
+spec:
+  hosts:
+    - domain1.myapp.com
+    - backend1.myapp.com
+  gateways:
+    - gateway-server-customer-1
+  http:
+    - name: backend-customer-1
+      route:
+        - destination:
+            host: server-customer-1.spotlight-customer-1.svc.cluster.local
+            subset: backend-customer-1-subset
+          weight: 100
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: gateway-server-customer-2
+  namespace: spotlight-customer-2
+spec:
+  selector: 
+    app: istio-ingressgateway
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - domain2.myapp.com
+        - backend2.myapp.com
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: backend-customer-2
+  namespace: spotlight-customer-2
+spec:
+  host: server-customer-2.spotlight-customer-2.svc.cluster.local
+  subsets:
+    - name: backend-customer-2-subset
+      labels:
+        app: server-customer-2
+      trafficPolicy:
+        loadBalancer:
+          simple: ROUND_ROBIN
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: backend-customer-2-vs
+  namespace: spotlight-customer-2
+spec:
+  hosts:
+    - domain2.myapp.com
+    - backend2.myapp.com
+  gateways:
+    - gateway-server-customer-2
+  http:
+    - name: backend-customer-2
+      route:
+        - destination:
+            host: server-customer-2.spotlight-customer-2.svc.cluster.local
+            subset: backend-customer-2-subset
+          weight: 100
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
   name: gateway-customer-2
   namespace: spotlight-customer-2
 spec:
@@ -88,6 +192,7 @@ metadata:
 spec:
   hosts:
     - spotlight-customer-2.com
+    - backend2.myapp.com
   gateways:
     - gateway-customer-2
   http:
