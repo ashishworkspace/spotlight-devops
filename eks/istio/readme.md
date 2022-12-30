@@ -34,3 +34,5 @@ Authorization Policy: Authorization policy supports CUSTOM, DENY and ALLOW actio
 ```istio-apply-service-entry
 kubectl apply -f spotlight-devops/eks/istio/istio-authorization-policy.yml
 ```
+![image](https://user-images.githubusercontent.com/70542481/210069330-850aed57-f0cf-4da6-8943-b0fe2fe0fd75.png)
+* we cannot access other pods i.e. due to RBAC => due to deny all
