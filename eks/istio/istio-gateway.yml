@@ -204,3 +204,41 @@ spec:
             host: server-customer-2.spotlight-customer-2.svc.cluster.local
             subset: backend-customer-2-subset
           weight: 100
+---
+# Extra
+
+# See more at https://istio.io/docs/reference/config/networking/service-entry/
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: cntre.in
+spec:
+  hosts:
+  - cntre.in
+  ports:
+  - number: 80
+    name: http
+    protocol: HTTP
+  - number: 443
+    name: https
+    protocol: HTTPS
+  resolution: DNS
+  location: MESH_EXTERNAL
+---
+
+# Deny All => that is one pod cannot contact with other
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-all
+  namespace: spotlight-customer-1
+spec:
+  {}
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-all
+  namespace: spotlight-customer-2
+spec:
+  {}

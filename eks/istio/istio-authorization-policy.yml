@@ -1,0 +1,16 @@
+# Deny All => that is one pod cannot contact with other
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-all
+  namespace: spotlight-customer-1
+spec:
+  {}
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-all
+  namespace: spotlight-customer-2
+spec:
+  {}
