@@ -14,3 +14,57 @@ metadata:
   namespace: spotlight-customer-2
 spec:
   {}
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: pa
+  namespace: spotlight-customer-1
+spec:
+  mtls:
+    mode: STRICT
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: pa
+  namespace: spotlight-customer-2
+spec:
+  mtls:
+    mode: STRICT
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: certain
+  namespace: spotlight-customer-1
+spec:
+  selector:
+    matchLabels:
+      app: server-customer-1
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["spotlight-customer-1"]
+    to:
+    - operation:
+        methods: ["GET"]
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: certain
+  namespace: spotlight-customer-2
+spec:
+  selector:
+    matchLabels:
+      app: server-customer-2
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["spotlight-customer-2"]
+    to:
+    - operation:
+        methods: ["GET"]
